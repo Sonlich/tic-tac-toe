@@ -1,0 +1,237 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cell {
+  display: flex;
+  outline: 1px solid black;
+  width: 300px;
+  position: relative;
+  outline: 1px solid black;
+  width: 300px;
+  height: 100px;
+  margin: 0 0px 0px 0;
+}
+
+.cross {
+  outline: 1px solid black;
+  width: 100px;
+  height: 100px;
+  margin: 0 0px 0px 0;
+  position: relative;
+}
+
+.circle {
+  width: 80px;
+  height: 80px;
+  margin: 0 0px 0px 0;
+  border: rgb(0, 247, 255) solid;
+  border-radius: 50%;
+  position: absolute;
+  top: 7%;
+  right: 7%;
+}
+
+.cross {
+  position: relative;
+  will-change: transform;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-animation: appear 0.2s cubic-bezier(0.5, 1.8, 0.1, 1.1);
+  -moz-animation: appear 0.2s cubic-bezier(0.5, 1.8, 0.1, 1.1);
+  animation: appear 0.2s cubic-bezier(0.5, 1.8, 0.1, 1.1);
+}
+
+.cross:before,
+.cross:after {
+  position: absolute;
+  content: '';
+  display: block;
+  background-color: rgb(255, 0, 0);
+  right: 50%;
+  bottom: 8%;
+  width: 5px;
+  height: 90px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.cross:before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.cross:after {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.winner {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: x-large;
+  margin-bottom: 20px;
+  animation: 3s show ease;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.restart {
+  padding: 0.6em 2em;
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-size: large;
+  max-width: 240px;
+  height: 50px;
+  margin: 30px;
+}
+
+.restart:before {
+  content: '';
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing-restart 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes glowing-restart {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.restart:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #222;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+.score {
+  max-width: 375px;
+  max-height: 20px;
+  background: #000000;
+  border-radius: 12px;
+  border: 3px solid white;
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  padding: 68px 82px;
+  gap: 100px;
+  box-shadow: 0px 0px 3px black;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.x-score {
+  width: 40px;
+  height: 45px;
+  margin-bottom: -20px;
+}
+
+.x-score:before,
+.x-score:after {
+  width: 3px;
+  height: 45px;
+}
+
+.o-score {
+  width: 35px;
+  height: 35px;
+  position: relative;
+  margin-bottom: -15px;
+  margin-left: 5px;
+}
+
+.score-tie {
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 36px;
+  text-align: center;
+  margin-bottom: -10px;
+  color: white;
+}
+
+.col-display {
+  font-family: 'Silkscreen', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  margin-top: 1em;
+  text-align: center;
+}
